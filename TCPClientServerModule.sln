@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{F78228D7-B7DC-4624-85DF-571A7C71E84D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{C8C9C2FF-BA6A-483F-BDBF-9E9181B9A428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPNetworkModule", "TCPNetworkLibrary\TCPNetworkModule.csproj", "{4AAFFB53-F934-4B41-A949-94F580451F71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F78228D7-B7DC-4624-85DF-571A7C71E84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78228D7-B7DC-4624-85DF-571A7C71E84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78228D7-B7DC-4624-85DF-571A7C71E84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78228D7-B7DC-4624-85DF-571A7C71E84D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C9C2FF-BA6A-483F-BDBF-9E9181B9A428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C9C2FF-BA6A-483F-BDBF-9E9181B9A428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C9C2FF-BA6A-483F-BDBF-9E9181B9A428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C9C2FF-BA6A-483F-BDBF-9E9181B9A428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AAFFB53-F934-4B41-A949-94F580451F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AAFFB53-F934-4B41-A949-94F580451F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AAFFB53-F934-4B41-A949-94F580451F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AAFFB53-F934-4B41-A949-94F580451F71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DA8AE6B-6AA5-4C62-9AB8-7864DD48D33C}
+	EndGlobalSection
+EndGlobal
