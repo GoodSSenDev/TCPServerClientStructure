@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 using Newtonsoft.Json;
 
-namespace TCPNetworkModule.Message
+namespace TCPNetworkModule.Messages
 {
     public class HeartBeatResponseMessage : Message
     {

@@ -2,7 +2,7 @@
 
 using System;
 using System.Reflection;
-
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using TCPNetworkModule;
 
@@ -19,6 +19,26 @@ namespace TCPNetworkModule.Json
 
         protected override RouteAttribute? GetRouteAttribute( MethodInfo mi )
             => mi.GetCustomAttribute<JsonRouteAttribute>( );
+
+        //protected override async Task<JObject?> DispatchAsync(JObject message)
+        //{ 
+
+        //    if (message.GetType().GetProperty("DispatchIndex").GetValue(null) is int dispatchIndex)
+        //    {
+        //        return await _handlers[dispatchIndex].targetMethod(message);
+        //    }
+
+        //    //foreach (var (route, target) in _handlers)
+        //    //{
+        //    //    if (IsMatch(route, message))
+        //    //    {
+        //    //        return await target(message);
+        //    //    }
+        //    //}
+
+        //    //No handler?? what to do??
+        //    return null;
+        //}
 
         protected override bool IsMatch( RouteAttribute route, JObject message )
             => message.SelectToken( route.Path )?.ToString( ) == ( route as JsonRouteAttribute )?.Value;

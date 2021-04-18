@@ -4,11 +4,10 @@ using System.Xml.Serialization;
 
 using Newtonsoft.Json;
 
-namespace TCPNetworkModule.Message
+namespace TCPNetworkModule.Messages
 {
     public class HeartBeatRequestMessage : Message
     {
-
         [JsonProperty( "posData" )]
         public POSData? POSData { get; set; }
 

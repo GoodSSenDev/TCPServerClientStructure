@@ -5,18 +5,21 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using TCPNetworkModule.Json;
-using TCPNetworkModule.Message;
+using TCPNetworkModule.Messages;
 
 namespace Server
 {
     public class TCPSocketServer
     {
         readonly JsonMessageDispatcher _messageDispatcher = new JsonMessageDispatcher();
+        readonly JsonSocketServer _socketServer;
 
         public TCPSocketServer()
         {
             //TODO: Register Messages
             _messageDispatcher.Register<HeartBeatRequestMessage, HeartBeatResponseMessage>(MessageHandler.HandleMessage);
+            _socketServer = new JsonSocketServer(_messageDispatcher);
+
         }
 
         /// <summary>
@@ -26,17 +29,20 @@ namespace Server
         /// <param name="port"></param>
         public void Start(int port = 5544)
         {
+
+            _socketServer.Start();
+
             Console.WriteLine("SERVER IS STARTING");
 
-            var endPoint = new IPEndPoint(IPAddress.Loopback, port);
+            //var endPoint = new IPEndPoint(IPAddress.Loopback, port);
 
-            var socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            socket.Bind(endPoint);
-            socket.Listen(128); //how much log will save 
+            //var socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            //socket.Bind(endPoint);
+            //socket.Listen(128); //how much log will save 
 
-            _ = Task.Run(() => DoResponse(socket));
+            //_ = Task.Run(() => DoResponse(socket));
 
-            Console.WriteLine("SERVER IS READY");
+           Console.WriteLine("SERVER IS READY");
         }
 
         /// <summary>
@@ -47,27 +53,27 @@ namespace Server
         /// </summary>
         /// <param name="socket"></param>
         /// <returns></returns>
-        private async Task DoResponse(Socket socket)
-        {
-            do
-            {
-                var clientSocket = await Task.Factory.FromAsync(
-                    new Func<AsyncCallback, object, IAsyncResult>(socket.BeginAccept),
-                    new Func<IAsyncResult, Socket>(socket.EndAccept),
-                    null).ConfigureAwait(false);
+    //    private async Task DoResponse(Socket socket)
+    //    {
+    //        do
+    //        {
+    //            var clientSocket = await Task.Factory.FromAsync(
+    //                new Func<AsyncCallback, object, IAsyncResult>(socket.BeginAccept),
+    //                new Func<IAsyncResult, Socket>(socket.EndAccept),
+    //                null).ConfigureAwait(false);
 
-                Console.WriteLine("ECHO SERVER :: CLIENT CONNECTED");
+    //            Console.WriteLine("ECHO SERVER :: CLIENT CONNECTED");
 
-                var channel = new JsonChannel();
+    //            var channel = new JsonChannel();
 
-                _messageDispatcher.Bind(channel);
+    //            _messageDispatcher.Bind(channel);
 
-                channel.Attach(clientSocket);
+    //            channel.Attach(clientSocket);
 
-                while (true) { }
+    //            while (true) { }
 
-            } while (true);
-        }
+    //        } while (true);
+    //    }
 
     }
 }

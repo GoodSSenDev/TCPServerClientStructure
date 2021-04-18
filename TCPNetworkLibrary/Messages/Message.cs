@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 using Newtonsoft.Json;
 
-namespace TCPNetworkModule.Message
+namespace TCPNetworkModule.Messages
 {
     /*
       *  <Message type='Request' action='HeartBeat' id='0001'>
@@ -20,7 +20,7 @@ namespace TCPNetworkModule.Message
 
     public enum MessageType
     {
-        Request,
+        Request, 
         Response
     }
 
@@ -30,13 +30,11 @@ namespace TCPNetworkModule.Message
         Failure
     }
 
-    public abstract class Message
+
+    public abstract class Message 
     {
         [JsonProperty( "id" )]
         public string? Id { get; set; }
-
-        //[JsonProperty("dispatchIndex")] // this int used in dispatching messages (as a index)
-        //public readonly static int? DisPatchIndex { get; set; }
 
         [JsonProperty( "type" )]
         public MessageType Type { get; set; }
